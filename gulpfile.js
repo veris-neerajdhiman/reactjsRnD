@@ -1,4 +1,4 @@
-"use strict".js;
+"use strict";
 
 var gulp = require('gulp');
 var connect = require('gulp-connect'); // Runs a local dev server
