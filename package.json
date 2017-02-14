@@ -1,0 +1,27 @@
+{
+  "name": "reactjsrnd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gulp": "gulp",
+    "minify": "gulp minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/veris-neerajdhiman/reactjsRnD.git"
+  },
+  "author": "neeraj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/veris-neerajdhiman/reactjsRnD/issues"
+  },
+  "homepage": "https://github.com/veris-neerajdhiman/reactjsRnD#readme",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-cli": "^1.2.2",
+    "gulp-connect": "^5.0.0",
+    "gulp-open": "^2.0.0"
+  }
+}
