@@ -10,12 +10,12 @@ var Input = React.createClass({
         onChange: React.PropTypes.func.isRequired,
         placeholder: React.PropTypes.string,
         value: React.PropTypes.string,
-        error: React.PropTypes.string,
+        error: React.PropTypes.string
     },
 
     render: function () {
         var wrapperClass = 'form-group';
-        if (this.props.error && this.props.error.lrngth > 0){
+        if (this.props.error && this.props.error.length > 0){
             wrapperClass += " " + 'has-error';
         }
 
@@ -28,8 +28,8 @@ var Input = React.createClass({
                            className="form-control"
                            placeholder={this.props.placeholder}
                            ref={this.props.name}
+                           value={this.props.value}
                            onChange={this.props.onChange}
-                           value={this.props.name}
                     />
                     <div className="input">{this.props.error}</div>
                 </div>
