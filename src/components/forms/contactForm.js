@@ -13,6 +13,7 @@ var contactForm = React.createClass({
                    label="Name"
                    value={this.props.contact.name}
                    onChange={this.props.onChange}
+                   error={this.props.errors.name}
                />
 
                <Input
