@@ -11,7 +11,6 @@ var sampleForm = React.createClass({
     },
 
     setContactState: function (event) { // called for every key press
-        console.log("dddd");
       var field = event.target.name;
       var value = event.target.value;
       this.state.contact[field] = value;
@@ -23,7 +22,7 @@ var sampleForm = React.createClass({
             <div>
                 <ContactForm
                     contact={this.state.contact}
-                    onChange={this.state.setContactState}
+                    onChange={this.setContactState}
                 />
             </div>
         );
