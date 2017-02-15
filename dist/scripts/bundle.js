@@ -33171,12 +33171,86 @@ module.exports = Header;
 
 var React = require('react');
 
+var contactForm = React.createClass({displayName: "contactForm",
+    render: function(){
+        return (
+           React.createElement("form", null, 
+               React.createElement("h1", null, "Contact US"), 
+               React.createElement("label", {htmlFor: "name"}, "Name : "), 
+               React.createElement("input", {type: "text", 
+                      name: "name", 
+                      className: "form-control", 
+                      placeholder: "name", 
+                      ref: "name", 
+                      onChange: this.props.onChange, 
+                      value: this.props.name}), 
+               React.createElement("br", null), 
+
+               React.createElement("label", {htmlFor: "desc"}, "Description: "), 
+               React.createElement("input", {type: "text", 
+                      name: "desc", 
+                      className: "form-control", 
+                      placeholder: "Description", 
+                      ref: "desc", 
+                      onChange: this.props.onChange, 
+                      value: this.props.desc}), 
+               React.createElement("br", null), 
+
+               React.createElement("input", {type: "submit", className: "btn btn-default", value: "contact"})
+           )
+        );
+    }
+});
+
+module.exports = contactForm;
+
+},{"react":196}],202:[function(require,module,exports){
+"use strict";
+
+var React = require('react');
+var ContactForm = require('./contactForm');
+
+var sampleForm = React.createClass({displayName: "sampleForm",
+    getInitialState: function () {
+        return {
+            contact : {id: "", name: "", desc: ""}
+        };
+    },
+
+    setContactState: function (event) { // called for every key press
+      var field = event.target.name;
+      var value = event.target.value;
+      this.state.contact[field] = value;
+      return this.setState({contact: this.state.contact});
+    },
+
+    render: function(){
+        return (
+            React.createElement("div", null, 
+                React.createElement(ContactForm, {
+                    contact: this.state.contact, 
+                    onChange: this.state.setContactState}
+                )
+            )
+        );
+    }
+});
+
+module.exports = sampleForm;
+
+},{"./contactForm":201,"react":196}],203:[function(require,module,exports){
+"use strict";
+
+var React = require('react');
+var Link = require('react-router').Link;
+
 var Home = React.createClass({displayName: "Home",
    render: function () {
        return (
            React.createElement("div", {className: "jumbotron"}, 
                 React.createElement("h1", null, "My App"), 
-                React.createElement("p", null, "rmy react first component")
+                React.createElement("p", null, "my react first component"), 
+               React.createElement(Link, {to: "forms"}, "React forms")
            )
        );
    }
@@ -33184,7 +33258,7 @@ var Home = React.createClass({displayName: "Home",
 
 module.exports = Home;
 
-},{"react":196}],202:[function(require,module,exports){
+},{"react":196,"react-router":27}],204:[function(require,module,exports){
 "use strict";
 
 var React = require('react');
@@ -33196,7 +33270,7 @@ Router.run(routes, function(Handler) {
     React.render(React.createElement(Handler, null), document.getElementById('app'));
 });
 
-},{"./routes":203,"react":196,"react-router":27}],203:[function(require,module,exports){
+},{"./routes":205,"react":196,"react-router":27}],205:[function(require,module,exports){
 "use strict";
 
 var React = require('react');
@@ -33210,10 +33284,11 @@ var routes = (
     React.createElement(Route, {name: "app", path: "/", handler: require('./components/app')}, 
         React.createElement(DefaultRoute, {handler: require('./components/homePage')}), 
         React.createElement(Route, {name: "about", handler: require('./components/about/aboutPage')}), 
+        React.createElement(Route, {name: "forms", handler: require('./components/forms/sampleFormPage')}), 
         React.createElement(NotFoundRoute, {handler: require('./components/NotFoundPage')})
     )
 )
 
 module.exports = routes;
 
-},{"./components/NotFoundPage":197,"./components/about/aboutPage":198,"./components/app":199,"./components/homePage":201,"react":196,"react-router":27}]},{},[202]);
+},{"./components/NotFoundPage":197,"./components/about/aboutPage":198,"./components/app":199,"./components/forms/sampleFormPage":202,"./components/homePage":203,"react":196,"react-router":27}]},{},[204]);

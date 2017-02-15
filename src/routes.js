@@ -11,6 +11,7 @@ var routes = (
     <Route name="app" path="/" handler={require('./components/app')}>
         <DefaultRoute handler={require('./components/homePage')}/>
         <Route name="about" handler={require('./components/about/aboutPage')}/>
+        <Route name="forms" handler={require('./components/forms/sampleFormPage')}/>
         <NotFoundRoute handler={require('./components/NotFoundPage')}/>
     </Route>
 )
