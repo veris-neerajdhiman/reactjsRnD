@@ -1,9 +1,15 @@
 "use strict";
 
 var React = require('react');
+var Router = require('react-router');
+
 var ContactForm = require('./contactForm');
 
 var sampleForm = React.createClass({
+    mixins: [
+      Router.Navigation
+    ],
+
     getInitialState: function () {
         return {
             contact : {id: "", name: "", desc: ""}
@@ -21,7 +27,11 @@ var sampleForm = React.createClass({
         event.preventDefault();
         console.log(this.state.contact) // show submitted data in console
 
-    //    TODO : can cal any API and save data
+        // TODO : can cal any API and save data
+
+        // redirect user on succesful save
+        this.transitionTo('about')
+
     },
 
     render: function(){
