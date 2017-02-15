@@ -15,14 +15,17 @@ var contactForm = React.createClass({
                    onChange={this.props.onChange}
                />
 
-               {/*<Input*/}
-                   {/*name="desc"*/}
-                   {/*label="Description"*/}
-                   {/*value={this.props.contact.desc}*/}
-                   {/*onChange={this.props.onChange}*/}
-               {/*/>*/}
+               <Input
+                   name="desc"
+                   label="Description"
+                   value={this.props.contact.desc}
+                   onChange={this.props.onChange}
+               />
 
-               <input type="submit" className="btn btn-default" value="Contact"/>
+               <input type="submit"
+                      className="btn btn-default"
+                      value="Contact"
+               onClick={this.props.onSave}/>
            </form>
         );
     }

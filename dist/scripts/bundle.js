@@ -32217,14 +32217,17 @@ var contactForm = React.createClass({displayName: "contactForm",
                    onChange: this.props.onChange}
                ), 
 
-               /*<Input*/
-                   /*name="desc"*/
-                   /*label="Description"*/
-                   /*value={this.props.contact.desc}*/
-                   /*onChange={this.props.onChange}*/
-               /*/>*/
+               React.createElement(Input, {
+                   name: "desc", 
+                   label: "Description", 
+                   value: this.props.contact.desc, 
+                   onChange: this.props.onChange}
+               ), 
 
-               React.createElement("input", {type: "submit", className: "btn btn-default", value: "Contact"})
+               React.createElement("input", {type: "submit", 
+                      className: "btn btn-default", 
+                      value: "Contact", 
+               onClick: this.props.onSave})
            )
         );
     }
@@ -32246,11 +32249,17 @@ var sampleForm = React.createClass({displayName: "sampleForm",
     },
 
     setContactState: function (event) { // called for every key press
-        console.log("dddd");
       var field = event.target.name;
       var value = event.target.value;
       this.state.contact[field] = value;
       return this.setState({contact: this.state.contact});
+    },
+
+    saveContact: function (event) { //called when click form submit button
+        event.preventDefault();
+        console.log(this.state.contact) // show submitted data in console
+
+    //    TODO : can cal any API and save data
     },
 
     render: function(){
@@ -32258,7 +32267,8 @@ var sampleForm = React.createClass({displayName: "sampleForm",
             React.createElement("div", null, 
                 React.createElement(ContactForm, {
                     contact: this.state.contact, 
-                    onChange: this.state.setContactState}
+                    onChange: this.setContactState, 
+                    onSave: this.saveContact}
                 )
             )
         );

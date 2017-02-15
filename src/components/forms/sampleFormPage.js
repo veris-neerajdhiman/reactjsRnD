@@ -17,12 +17,20 @@ var sampleForm = React.createClass({
       return this.setState({contact: this.state.contact});
     },
 
+    saveContact: function (event) { //called when click form submit button
+        event.preventDefault();
+        console.log(this.state.contact) // show submitted data in console
+
+    //    TODO : can cal any API and save data
+    },
+
     render: function(){
         return (
             <div>
                 <ContactForm
                     contact={this.state.contact}
                     onChange={this.setContactState}
+                    onSave={this.saveContact}
                 />
             </div>
         );
